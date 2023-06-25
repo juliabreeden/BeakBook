@@ -3,8 +3,7 @@ import App from "./App";
 
 const Home = () => {
     return (
-        <div>
-        </div>
+        <div>your mom</div>
     )
 }
 

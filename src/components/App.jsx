@@ -4,6 +4,7 @@ import LoginForm from "./login";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home'
 import AddCard from './AddCard'
+import SignupForm from './signup';
 
 const App = () => {
     const h1Style = {
@@ -16,6 +17,7 @@ const App = () => {
     <BrowserRouter>
     <Routes>
         <Route path="/" element={<LoginForm/>} />
+        <Route path='/signup' element={<SignupForm/>}/>
         <Route path='/home' element = {<Home/>}/>
         <Route path='/add' element = {<AddCard/>}/>
         {/* <Route exact path="/homepage" component={Homepage} /> */}
