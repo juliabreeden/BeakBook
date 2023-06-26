@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import App from './App';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const navigate = useNavigate(); // Hook to handle navigation
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -22,20 +24,19 @@ const SignUpForm = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const newUser = {
-        username: username,
-        password: password,
-        _id: Math.random(48463)
+      username: username,
+      password: password,
+      _id: Math.random(48463)
     }
     if (password === confirmPassword) {
-      // Perform sign-up logic here
       axios.post('http://localhost:3000/home', newUser, { headers: { 'Content-Type': 'application/json' } })
-      .then(response => {
-        console.log('Sign up successful!');
-      })
-      .catch(error => {
-        console.log('Error:', error);
-      });
-      console.log('Sign up successful!');
+        .then(response => {
+          console.log('Sign up successful!');
+          navigate('/home'); // Navigate to the home page
+        })
+        .catch(error => {
+          console.log('Error:', error);
+        });
     } else {
       console.log('Passwords do not match!');
     }

@@ -1,33 +1,31 @@
-import React from "react";
-import ReactDom from "react-dom";
-import LoginForm from "./login";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Home'
-import AddCard from './AddCard'
-import SignupForm from './signup';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Import your components
+import Home from './Home';
+import LoginForm from './login';
+import SignUpForm from './signup';
 
 const App = () => {
-    const h1Style = {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-      };
-    return (
-    <>
-    <BrowserRouter>
-    <Routes>
-        <Route path="/" element={<LoginForm/>} />
-        <Route path='/signup' element={<SignupForm/>}/>
-        <Route path='/home' element = {<Home/>}/>
-        <Route path='/add' element = {<AddCard/>}/>
-        {/* <Route exact path="/homepage" component={Homepage} /> */}
-    </Routes>
-    </BrowserRouter>
-    <div>
-    <h1 style={h1Style}>BeakBook</h1>
-    </div>
-    </>
-    );
-}
+  const appStyles = {
+    backgroundColor: '#99ebeb',
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
+  return (
+    <Router>
+      <div style={appStyles}>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
