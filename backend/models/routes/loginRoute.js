@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../userModel');
+const cookieParser = require('cookie-parser');
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
@@ -10,7 +11,10 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({ username, password });
 
     if (user) {
+      console.log('users cookie is:', user._id);
       // If the user is found, send a success response
+      res.cookie('testCookie', 'testValue');
+      res.cookie('userId', user._id, { httpOnly: true });
       res.status(200).json({ message: 'Login successful!' });
     } else {
       // If the user is not found, send an error response

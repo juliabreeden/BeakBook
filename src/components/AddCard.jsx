@@ -1,10 +1,21 @@
 import React from "react";
 import App from "./App";
 import Home from './Home';
+import CreateCard from './CreateCard';
+import { useState } from 'react';
+
 
 const AddCard = () => {
+  const [showCreateCard, setShowCreateCard] = useState(false);
+
+  function handleClick() {
+    setShowCreateCard(true);
+  }
     return (
-        <div>
+      <div>
+      {showCreateCard ? (
+        <CreateCard />
+      ) : (
              <button
       style={{
         position: 'fixed',
@@ -22,6 +33,7 @@ const AddCard = () => {
         border: 'none',
         cursor: 'pointer'
       }}
+      onClick = {handleClick}
     >
       <span
         style={{
@@ -33,6 +45,7 @@ const AddCard = () => {
         +
       </span>
     </button>
+      )}
         </div>
     )
 }
