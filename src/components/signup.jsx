@@ -7,8 +7,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const navigate = useNavigate(); // Hook to handle navigation
-
+  const navigate = useNavigate(); 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -29,10 +28,10 @@ const SignUpForm = () => {
       _id: Math.random(48463)
     }
     if (password === confirmPassword) {
-      axios.post('http://localhost:3000/home', newUser, { headers: { 'Content-Type': 'application/json' } })
+      axios.post('http://localhost:3000/home', newUser, { headers: { 'Content-Type': 'application/json' }, withCredentials: true })
         .then(response => {
           console.log('Sign up successful!');
-          navigate('/home'); // Navigate to the home page
+          navigate('/home'); 
         })
         .catch(error => {
           console.log('Error:', error);

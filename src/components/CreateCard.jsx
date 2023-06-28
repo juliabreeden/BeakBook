@@ -44,11 +44,8 @@ const CreateCard = () => {
     };
 
     try {
-      const response = await axios.post('/createCard', cardData, {
+      const response = await axios.post('http://localhost:3000/createCard', cardData, {
         withCredentials: true, // Include cookies in the request
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-        },
       });
       setCardData(response.data);
       setSubmitted(true);

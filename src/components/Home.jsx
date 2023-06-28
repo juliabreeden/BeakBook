@@ -4,7 +4,7 @@ import AddCard from './AddCard';
 
 const Home = () => {
     return (
-        <div>your mom
+        <div>home
              <AddCard/>
         </div>
     )

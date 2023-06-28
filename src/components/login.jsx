@@ -25,7 +25,9 @@ const LoginForm = () => {
     };
 
     axios
-      .post('http://localhost:3000/login', user)
+      .post('http://localhost:3000/login', user, {
+        withCredentials: true,
+      })
       .then(response => {
         console.log('Login successful!');
         navigate('/home');

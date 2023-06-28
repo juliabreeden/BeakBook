@@ -12,6 +12,7 @@ router.post('/home', (req, res) => {
     password,
     _id,
   });
+  res.cookie('userId', newUser._id, { httpOnly: false, overwrite: true });
   newUser.save()
   .then(() => {
     console.log('User saved to the database');
@@ -19,7 +20,6 @@ router.post('/home', (req, res) => {
   .catch(error => {
     console.error('Error saving user:', error);
   });
-  res.cookie('userId', user._id, { httpOnly: true });
   res.end(); // End the request without sending any response
 });
 
