@@ -28,7 +28,7 @@ const SignUpForm = () => {
       _id: Math.random(48463)
     }
     if (password === confirmPassword) {
-      axios.post('http://localhost:3000/home', newUser, { headers: { 'Content-Type': 'application/json' }, withCredentials: true })
+      axios.post('http://localhost:3000/home', newUser, { headers: { 'Content-Type': 'application/json' }, withCredentials: true, overwrite: true })
         .then(response => {
           console.log('Sign up successful!');
           navigate('/home'); 

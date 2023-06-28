@@ -6,7 +6,7 @@ const cardSchema = new mongoose.Schema({
   location: String,
   birdWas: String,
   difficulty: String,
-  _id: Number,
+  userId: Number,
 });
 
 const CardModel = mongoose.model('Card', cardSchema);

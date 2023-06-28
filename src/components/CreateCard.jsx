@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Card from './Card';
 
-const CreateCard = () => {
+const CreateCard = ({ onSubmit, fetchCards }) => {
   const [species, setSpecies] = useState('');
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [birdWas, setBirdWas] = useState('');
   const [difficulty, setDifficulty] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [cardData, setCardData] = useState(null);
 
   const handleSpeciesChange = (e) => {
     setSpecies(e.target.value);
@@ -32,9 +29,7 @@ const CreateCard = () => {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-    console.log('create card submit button pressed');
     const cardData = {
       species,
       date,
@@ -44,32 +39,20 @@ const CreateCard = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/createCard', cardData, {
-        withCredentials: true, // Include cookies in the request
+      await axios.post('http://localhost:3000/createCard', cardData, {
+        withCredentials: true,
       });
-      setCardData(response.data);
-      setSubmitted(true);
+      onSubmit();
+      fetchCards();
     } catch (error) {
       console.error('Error submitting card:', error);
     }
   };
 
-  if (submitted) {
-    return <Card cardData={cardData} />;
-  }
-
   return (
-    <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-    }}
-  >
     <div>
-    <form onSubmit={handleSubmit}
-        style={{
+      <form onSubmit={handleSubmit}
+      style={{
           display: 'flex',
           flexDirection: 'column',
           border: '1px solid #ccc',
@@ -118,7 +101,7 @@ const CreateCard = () => {
             color: '#999',
             fontSize: '16px',
             fontFamily: 'Arial, sans-serif',
-            borderRadius: '4px',
+      borderRadius: '4px',
             padding: '8px',
             margin: '8px 0',
           }}
@@ -132,7 +115,6 @@ const CreateCard = () => {
         </select>
         <button type="submit">Submit</button>
       </form>
-    </div>
     </div>
   );
 };

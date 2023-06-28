@@ -10,7 +10,7 @@ const session = require('express-session');
 router.post('/createCard', async (req, res) => {
     console.log('cookies', req.cookies);
     try {
-        const _id = Number(req.cookies.userId);
+        const userId = Number(req.cookies.userId);
         const species = req.body.species;
         const date = req.body.date;
         const location = req.body.location;
@@ -23,7 +23,7 @@ router.post('/createCard', async (req, res) => {
         location,
         birdWas,
         difficulty,
-        _id
+        userId
       });
   
       await newCard.save();

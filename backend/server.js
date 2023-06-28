@@ -6,7 +6,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const signUpRouter = require('./models/routes/signUpRoute');
 const loginRouter = require('./models/routes/loginRoute'); 
-const createCardRouter = require('./models/routes/createCardRoute'); // Import the login route
+const createCardRouter = require('./models/routes/createCardRoute'); 
+const Card = require('./models/cardModel');
 
 const allowedOrigins = ['http://localhost:8080', 'http://localhost:3000'];
 
@@ -33,19 +34,18 @@ app.use(signUpRouter);
 app.use(loginRouter); 
 app.use(createCardRouter);
 
-// Example API endpoint for fetching cards based on userId
-// app.get('/api/cards', (req, res) => {
-//   const _id = req.cookies.userId;
 
-//   Card.find({ _id }, (err, cards) => {
-//     if (err) {
-//       console.error(err);
-//       res.status(500).send('Internal Server Error');
-//     } else {
-//       res.json(cards);
-//     }
-//   });
-// });
+app.get('/cards', async (req, res) => {
+  try {
+    const userId = req.cookies.userId;
+    const cards = await Card.find({ userId }).exec();
+    res.json(cards);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 
 // app.use('/signup', signUpRouter);
