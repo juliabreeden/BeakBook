@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cardSchema = new mongoose.Schema({
   species: String,
   date: String,
-  location: String,
   birdWas: String,
   difficulty: String,
   userId: Number,

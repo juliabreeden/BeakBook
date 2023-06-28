@@ -14,7 +14,7 @@ const allowedOrigins = ['http://localhost:8080', 'http://localhost:3000'];
 app.use(cors({
   origin: allowedOrigins,
   credentials: true,
-  methods: ['GET', 'POST'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   allowedHeaders: ['Content-Type'], 
 }));
 
@@ -46,6 +46,36 @@ app.get('/cards', async (req, res) => {
   }
 });
 
+// Assuming you have an Express app instance defined as 'app'
+
+app.put('/cards/:id', (req, res) => {
+  const { id } = req.params;
+  const updatedCard = req.body; // Assuming the updated card data is sent in the request body
+
+  // Update the card in your database using the provided ID and updatedCard object
+
+  // Example implementation using MongoDB and Mongoose
+  // Assuming you have a Card model defined using Mongoose
+  Card.findByIdAndUpdate(id, updatedCard, { new: true })
+    .then((updatedCard) => {
+      res.status(200).json(updatedCard);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'Failed to update the card.' });
+    });
+});
+
+app.delete('/cards/:id', (req, res) => {
+  const { id } = req.params
+  Card.findByIdAndDelete(id)
+    .then(() => {
+      res.status(200)
+      console.log('card deleted')
+    })
+    .catch((error) => {
+      res.status(500).json({error: 'Failed to delete card.'})
+    })
+})
 
 
 // app.use('/signup', signUpRouter);
