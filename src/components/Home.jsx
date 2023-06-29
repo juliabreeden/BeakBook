@@ -10,6 +10,7 @@ const Home = () => {
   const [showCreateCard, setShowCreateCard] = useState(false);
   const [editCardId, setEditCardId] = useState(null);
 
+
   const fetchCards =  (userId) => {
     axios
       .get('http://localhost:3000/cards', {
@@ -33,10 +34,10 @@ const Home = () => {
 //   };
   
 
-  useEffect(() => {
-    const userId = JSON.parse(localStorage.getItem('userId'));
-    fetchCards(userId);
-  }, []);
+useEffect(() => {
+    // const userId = JSON.parse(localStorage.getItem('userId'));
+    fetchCards();
+  });
 
   const handleAddCardClick = () => {
     setShowCreateCard(true);
@@ -66,6 +67,7 @@ const Home = () => {
       await axios.delete(`http://localhost:3000/cards/${cardId}`, {
         withCredentials: true,
       });
+      setDeleteTrigger(!deleteTrigger);
       const userId = JSON.parse(localStorage.getItem('userId'));
       fetchCards(userId);
     } catch (error) {
