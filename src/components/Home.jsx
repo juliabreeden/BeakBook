@@ -62,18 +62,18 @@ useEffect(() => {
     fetchCards(userId);
     setEditCardId(null);
   };
-  const handleDeleteCard = async (cardId) => {
-    try {
-      await axios.delete(`http://localhost:3000/cards/${cardId}`, {
-        withCredentials: true,
-      });
-      setDeleteTrigger(!deleteTrigger);
-      const userId = JSON.parse(localStorage.getItem('userId'));
-      fetchCards(userId);
-    } catch (error) {
-      console.error('Error deleting card:', error);
-    }
-  };
+  // const handleDeleteCard = async (cardId) => {
+  //   try {
+  //     await axios.delete(`http://localhost:3000/cards/${cardId}`, {
+  //       withCredentials: true,
+  //     });
+  //     setDeleteTrigger(!deleteTrigger);
+  //     const userId = JSON.parse(localStorage.getItem('userId'));
+  //     fetchCards(userId);
+  //   } catch (error) {
+  //     console.error('Error deleting card:', error);
+  //   }
+  // };
   return (
     <>
       <div>

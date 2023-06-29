@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "BROWSER=chrome webpack-dev-server --hot --mode development --open",
+    "start": "BROWSER=google-chrome webpack-dev-server --hot --mode development --open",
     "build": "webpack --config webpack.config.js --mode production"
   },
   "repository": {
