@@ -43,7 +43,7 @@ useEffect(() => {
   });
 
   const signOut = () => {
-    navigate('/signup');
+    navigate('/');
   }
 
   const handleAddCardClick = () => {

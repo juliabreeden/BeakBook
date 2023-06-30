@@ -29,7 +29,7 @@ app.use(cookieParser());
 //     secure: false
 //   },
 // }));
-
+app.use(express.static(__dirname + '/src'));
 app.use(signUpRouter);
 app.use(loginRouter); 
 app.use(createCardRouter);

@@ -48,7 +48,7 @@ const LoginForm = () => {
   const titleStyle = {
     fontSize: '48px', 
     marginTop: '0px',
-    fontFamily: 'Lato',
+    fontFamily: 'Montseratt',
     marginBottom: '2px'
     
   };
@@ -56,7 +56,7 @@ const LoginForm = () => {
   const h2Style = {
     fontSize: '10px',
     marginTop: '0px',
-    fontFamily: 'Lato'
+    fontFamily: 'Poppins'
   }
 
   const inputIcon = {
@@ -81,6 +81,7 @@ const LoginForm = () => {
     height: '30px',
     width: '100%',
     boxSizing: 'border-box',
+    fontFamily: 'Varela Round'
 
     // marginBottom: '20px'
 
@@ -123,7 +124,9 @@ const LoginForm = () => {
   const signUpButtonStyles = {
     fontFamily: 'Poppins',
     paddingLeft: '10px',
-    height: '30px'
+    height: '30px', 
+    backgroundColor:'#86f9f9',
+    cursor:'pointer'
   };
 
   return (
@@ -162,7 +165,7 @@ const LoginForm = () => {
             <label htmlFor="password"></label>
             <input style={inputStyle} type="password" id="password" name="password" placeholder='Password' value={password} onChange={handlePasswordChange} />
           </div>
-          <button style={{height: '35px', fontFamily: 'Poppins', width: '200px'}}type="submit">Log in</button>
+          <button style={{cursor: 'pointer', height: '35px', fontFamily: 'Poppins', width: '200px'}}type="submit">Log in</button>
         </form>
         <div style={signUpContainerStyle}>
             <p style={signUpTextStyles}>Not a user yet?</p>

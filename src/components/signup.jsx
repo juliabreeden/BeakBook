@@ -9,6 +9,7 @@ const SignUpForm = () => {
   const [signUpError, setSignUpError] = useState(false);
 
   const navigate = useNavigate(); 
+
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -43,29 +44,94 @@ const SignUpForm = () => {
     }
   };
 
+  const titleStyle = {
+    fontSize: '48px', 
+    marginTop: '0px',
+    fontFamily: 'Montseratt',
+    marginBottom: '2px'   
+  };
+
+  const h2Style = {
+    fontSize: '10px',
+    marginTop: '0px',
+    fontFamily: 'Poppins'
+  }
+
+  const inputIcon = {
+    position: 'relative',
+    display: 'inline-block',
+    width: '200px',
+    marginBottom: '15px',
+    margninTop: '20px'
+  }
+
+  const iconStyle = {
+    position: 'absolute',
+    display: 'block',
+    left: '10px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    pointerEvents: 'none',
+  }
+
+  const inputStyle = {
+    paddingLeft: '30px',
+    height: '30px',
+    width: '100%',
+    boxSizing: 'border-box',
+    fontFamily: 'Varela Round'
+  }
+
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ textAlign: 'center' }}>
-      {signUpError && <p style={{ color: 'red' }}>Passwords do not match. Please try again.</p>}
-      <form onSubmit={handleSignUp}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <br />
-        <label>
-          Confirm Password:
-          <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
-        </label>
-        <br />
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        
+      }}
+    >
+      <div style={{ 
+        textAlign: 'center',
+        borderRadius: '10px',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
+        margin: '10px',
+        paddingTop: '20px',
+        paddingBottom: '30px',
+        paddingRight: '40px',
+        paddingLeft: '40px',
+        background: 'radial-gradient(circle at right bottom, #ffe0c2 , #c2ffff)',
+        }}>
+        <h1 style={titleStyle}>Sign Up</h1> 
+        <h2 style={h2Style}>to start tracking your bird sightings on BeakBook</h2>
+        {signUpError && <p style={{ color: 'red' }}>Passwords do not match. Please try again.</p>}
+        <form style={formStyle} onSubmit={handleSignUp}>
+          <div style={inputIcon}>
+            <i className="fas fa-user" style={iconStyle}></i>
+            <label htmlFor="username"></label>
+            <input style={inputStyle} type="text" id="username" name="username" placeholder='@Username'value={username} onChange={handleUsernameChange} />
+          </div>
+          <div style={inputIcon}>
+            <i className="fas fa-lock" style={iconStyle}></i>
+            <label htmlFor="password"></label>
+            <input style={inputStyle} type="password" id="password" name="password" placeholder='Password' value={password} onChange={handlePasswordChange} />
+          </div>
+          <div style={inputIcon}>
+            <i className="fas fa-lock" style={iconStyle}></i>
+            <label htmlFor="confirmPassword"></label>
+            <input style={inputStyle} type="password" id="confirmPassword" name="confirmPassword" placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPasswordChange} />
+          </div>
+          <button style={{cursor: 'pointer', height: '35px', fontFamily: 'Poppins', width: '200px'}}type="submit">Sign Up</button>
+        </form>
+      </div>
     </div>
   );
 };
