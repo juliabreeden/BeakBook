@@ -46,6 +46,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "devDependencies": {
+    "file-loader": "^6.2.0",
     "node-polyfill-webpack-plugin": "^2.0.1"
   }
 }

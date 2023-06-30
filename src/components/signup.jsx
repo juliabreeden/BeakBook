@@ -6,6 +6,7 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [signUpError, setSignUpError] = useState(false);
 
   const navigate = useNavigate(); 
   const handleUsernameChange = (e) => {
@@ -37,12 +38,15 @@ const SignUpForm = () => {
           console.log('Error:', error);
         });
     } else {
+      setSignUpError(true);
       console.log('Passwords do not match!');
     }
   };
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div style={{ textAlign: 'center' }}>
+      {signUpError && <p style={{ color: 'red' }}>Passwords do not match. Please try again.</p>}
       <form onSubmit={handleSignUp}>
         <label>
           Username:
@@ -61,6 +65,7 @@ const SignUpForm = () => {
         <br />
         <button type="submit">Sign Up</button>
       </form>
+    </div>
     </div>
   );
 };

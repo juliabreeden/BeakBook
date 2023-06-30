@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState(false); // State for login error
+  const [loginError, setLoginError] = useState(false); 
   const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
@@ -15,6 +18,10 @@ const LoginForm = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  const signUpClick = () => {
+    navigate('/signup')
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -34,13 +41,89 @@ const LoginForm = () => {
       })
       .catch(error => {
         console.log('Login failed:', error);
-        setLoginError(true); // Set login error to true
+        setLoginError(true); 
       });
   };
 
   const titleStyle = {
-    fontSize: '48px', // Change the font family to 'Comic Sans MS'
-    marginTop: '50px', // Adjust the margin-top to move the title higher
+    fontSize: '48px', 
+    marginTop: '0px',
+    fontFamily: 'Lato',
+    marginBottom: '2px'
+    
+  };
+
+  const h2Style = {
+    fontSize: '10px',
+    marginTop: '0px',
+    fontFamily: 'Lato'
+  }
+
+  const inputIcon = {
+    position: 'relative',
+    display: 'inline-block',
+    width: '200px',
+    marginBottom: '15px',
+    margninTop: '20px'
+  }
+
+  const iconStyle = {
+    position: 'absolute',
+    display: 'block',
+    left: '10px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    pointerEvents: 'none',
+  }
+
+  const inputStyle = {
+    paddingLeft: '30px',
+    height: '30px',
+    width: '100%',
+    boxSizing: 'border-box',
+
+    // marginBottom: '20px'
+
+  }
+
+
+  // const usernameInputStyle = {
+  //   width: '300px',  // Set the width as per your needs
+  //   paddingLeft: '35px',  // Adjust the value as needed to prevent text overlaying the icon
+  //   // backgroundImage: 'url(.../userIcon)',
+  //   // backgroundRepeat: 'no-repeat',
+  //   // backgroundPosition: '7px center', 
+  //   // backgroundSize: '2px'// Adjust as needed to position the icon correctly
+  // };
+  
+ 
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+  
+
+
+  const signUpContainerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '10px',
+  };
+
+  const signUpTextStyles = {
+    fontFamily: 'Poppins',
+    fontSize: '12px',
+    marginRight: '10px',
+    maxWidth: '60px'
+  };
+
+  const signUpButtonStyles = {
+    fontFamily: 'Poppins',
+    paddingLeft: '10px',
+    height: '30px'
   };
 
   return (
@@ -50,24 +133,41 @@ const LoginForm = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
+        
       }}
     >
-      <div style={{ textAlign: 'center' }}>
-        <h1 style={titleStyle}>BeakBook</h1> {/* Updated title with new font and position */}
-        <h2>Login</h2>
+      <div style={{ 
+        textAlign: 'center',
+        borderRadius: '10px',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
+        margin: '10px',
+        paddingTop: '20px',
+        paddingBottom: '30px',
+        paddingRight: '40px',
+        paddingLeft: '40px',
+        background: 'radial-gradient(circle at right bottom, #ffe0c2 , #c2ffff)',
+
+        }}>
+        <h1 style={titleStyle}>Login</h1> 
+        <h2 style={h2Style}>to view BeakBook and track your bird sightings</h2>
         {loginError && <p style={{ color: 'red' }}>Invalid login information. Please try again or <a href="/signup">sign up</a>.</p>}
-        <form onSubmit={handleLogin}>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} />
+        <form style={formStyle} onSubmit={handleLogin}>
+        <div style={inputIcon}>
+        <i className="fas fa-user" style={iconStyle}></i>      
+            <label htmlFor="username"></label>
+            <input style={inputStyle} type="text" id="username" name="username" placeholder='@Username'value={username} onChange={handleUsernameChange} />
           </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
+          <div style={inputIcon}>
+          <i className="fas fa-lock" style={iconStyle}></i>
+            <label htmlFor="password"></label>
+            <input style={inputStyle} type="password" id="password" name="password" placeholder='Password' value={password} onChange={handlePasswordChange} />
           </div>
-          <button type="submit">Submit</button>
+          <button style={{height: '35px', fontFamily: 'Poppins', width: '200px'}}type="submit">Log in</button>
         </form>
-        <p>Not a registered user? <a href="/signup">Sign up</a>.</p>
+        <div style={signUpContainerStyle}>
+            <p style={signUpTextStyles}>Not a user yet?</p>
+            <button style={signUpButtonStyles} onClick={signUpClick}>Sign up</button>
+        </div>
       </div>
     </div>
   );

@@ -4,11 +4,14 @@ import Card from './Card';
 import CreateCard from './CreateCard';
 import EditCard from './EditCard';
 import React, { useState, useEffect } from 'react';
+// import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [cards, setCards] = useState([]);
   const [showCreateCard, setShowCreateCard] = useState(false);
   const [editCardId, setEditCardId] = useState(null);
+  const navigate = useNavigate();
 
 
   const fetchCards =  (userId) => {
@@ -38,6 +41,10 @@ useEffect(() => {
     // const userId = JSON.parse(localStorage.getItem('userId'));
     fetchCards();
   });
+
+  const signOut = () => {
+    navigate('/signup');
+  }
 
   const handleAddCardClick = () => {
     setShowCreateCard(true);
@@ -76,7 +83,11 @@ useEffect(() => {
   // };
   return (
     <>
+    <div>
+      <button style={{position: 'fixed', top: '22', left: '0'}}onClick={signOut}>Sign Out</button>
+    </div>
       <div>
+        {/* <h2 style={{textAlign: 'center'}}>BeakBook</h2> */}
         {showCreateCard ? (
           <CreateCard onSubmit={handleCreateCardSubmit} fetchCards={fetchCards} />
         ) : (
