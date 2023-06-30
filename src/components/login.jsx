@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import logo from '../logo-transparent-png.png';
 
 
 
@@ -48,7 +48,7 @@ const LoginForm = () => {
   const titleStyle = {
     fontSize: '48px', 
     marginTop: '0px',
-    fontFamily: 'Montseratt',
+    fontFamily: 'Poppins',
     marginBottom: '2px'
     
   };
@@ -139,6 +139,10 @@ const LoginForm = () => {
         
       }}
     >
+         <img src={logo} alt="Logo" style={{ width: '100px',  position: 'fixed',
+    top: '0',
+    left: '0',
+    right: '0', width: '150px', height: '28px'}} />
       <div style={{ 
         textAlign: 'center',
         borderRadius: '10px',

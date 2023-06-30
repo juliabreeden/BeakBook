@@ -83,44 +83,47 @@ useEffect(() => {
   //   }
   // };
   return (
-    <>
-    <div>
-      <button style={{position: 'fixed', top: '22', left: '0'}}onClick={signOut}>Sign Out</button>
-      <IdentifyButton/>
-    </div>
-      <div>
-        {/* <h2 style={{textAlign: 'center'}}>BeakBook</h2> */}
-        {showCreateCard ? (
-          <CreateCard onSubmit={handleCreateCardSubmit} fetchCards={fetchCards} />
-        ) : (
-          <AddCard onClick={handleAddCardClick} />
-        )}
-      </div>
+    <div></div>
+//     <>
+//     {/* <div>
+//       <button style={{position: 'fixed', top: '22', left: '0'}}onClick={signOut}>Sign Out</button>
+//       <IdentifyButton/>
+//     </div> */}
+//       {/* <div>
+//         {/* <h2 style={{textAlign: 'center'}}>BeakBook</h2> */}
+//         {showCreateCard ? (
+//           <CreateCard onSubmit={handleCreateCardSubmit} fetchCards={fetchCards} />
+//         ) : (
+//           <AddCard onClick={handleAddCardClick} />
+//         )}
+//       </div>
 
-      <div>
-        {!showCreateCard && !editCardId ? (
-          <>
-            {cards.length > 0 ? (
-              cards.map((card) => (
-                <Card key={card._id} data={card} onEdit={handleEditCardClick} fetchCards={fetchCards} />
-              ))
-            ) : (
-              <p>No cards found.</p>
-            )}
-          </>
-        ) : null}
-      </div>
+//       <div>
+//         {!showCreateCard && !editCardId ? (
+//           <>
+//             {cards.length > 0 ? (
+//               cards.map((card) => (
+//                 <Card key={card._id} data={card} onEdit={handleEditCardClick} fetchCards={fetchCards} />
+//               ))
+//             ) : (
+//               <p>No cards found.</p>
+//             )}
+//           </>
+//         ) : null}
+//       </div>
 
-      {editCardId && (
-        <EditCard
-          cardData={cards.find((card) => card._id === editCardId)}
-          onCancel={handleCancelEdit}
-          onSubmit={handleCardUpdate}
-        />
-      )}
-    </>
-  );
-};
+//       {editCardId && (
+//         <EditCard
+//           cardData={cards.find((card) => card._id === editCardId)}
+//           onCancel={handleCancelEdit}
+//           onSubmit={handleCardUpdate}
+//         />
+//       )}
+//     </>
+//   ); */}
+// };
+// </>
+)};
 
 export default Home;
 // import React, { useState, useEffect } from 'react';
