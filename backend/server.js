@@ -8,6 +8,8 @@ const signUpRouter = require('./models/routes/signUpRoute');
 const loginRouter = require('./models/routes/loginRoute'); 
 const createCardRouter = require('./models/routes/createCardRoute'); 
 const Card = require('./models/cardModel');
+const bodyParser = require('body-parser');
+const { Configuration, OpenAIApi } = require("openai");
 
 const allowedOrigins = ['http://localhost:8080', 'http://localhost:3000'];
 
@@ -18,7 +20,14 @@ app.use(cors({
   allowedHeaders: ['Content-Type'], 
 }));
 
+const configuration = new Configuration({
+  apiKey: "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",
+});
+
+const openai = new OpenAIApi(configuration);
+
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 // app.use(session({
@@ -33,6 +42,29 @@ app.use(express.static(__dirname + '/src'));
 app.use(signUpRouter);
 app.use(loginRouter); 
 app.use(createCardRouter);
+
+app.post("/chat", async (req, res) => {
+  // Get the prompt from the request
+  const { prompt } = req.body;
+
+  console.log(req.body);
+
+  // Generate a response with ChatGPT
+  const completion = await openai.createCompletion({
+  model: "text-davinci-002",
+  // model: 'gpt-3.5-turbo',
+  prompt: 'I need help identifying the species of a bird I saw. In your response, please do not include any sentences or words other than naming the birds. Do not say anything besides listing 1-4 possible species you think my card could be. Please pay special attention to the size and color of the bird when making your suggestions, and be as accurate as possible. Please do not just say random finches. Base your answer off of this bird information: Bird info is:' + prompt,
+  max_tokens: 60, // increased to give more room for varied answers
+  n: 1,
+  stop: null,
+  temperature: 0.4, // lowered a bit to make output more deterministic
+  top_p: 1, // nucleus sampling parameter for more diverse outputs
+  frequency_penalty: 0.5, // penalize frequently occuring outputs
+  presence_penalty: 0.5, // penalize new
+  });
+  console.log(completion.data.choices[0].text);
+  res.send(completion.data.choices[0].text);
+});
 
 
 app.get('/cards', async (req, res) => {

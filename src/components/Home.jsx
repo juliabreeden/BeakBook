@@ -6,6 +6,7 @@ import EditCard from './EditCard';
 import React, { useState, useEffect } from 'react';
 // import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import IdentifyButton from './IdentifyButton';
 
 const Home = () => {
   const [cards, setCards] = useState([]);
@@ -85,6 +86,7 @@ useEffect(() => {
     <>
     <div>
       <button style={{position: 'fixed', top: '22', left: '0'}}onClick={signOut}>Sign Out</button>
+      <IdentifyButton/>
     </div>
       <div>
         {/* <h2 style={{textAlign: 'center'}}>BeakBook</h2> */}
