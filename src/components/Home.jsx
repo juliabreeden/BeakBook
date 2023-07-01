@@ -1,166 +1,100 @@
-import axios from 'axios';
-import AddCard from './AddCard';
-import Card from './Card';
-import CreateCard from './CreateCard';
-import EditCard from './EditCard';
-import React, { useState, useEffect } from 'react';
-// import { Navigate } from 'react-router-dom';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import IdentifyButton from './IdentifyButton';
+import heroBackground from './heroBackground.jpg';
+import '../styles.css';
 
 const Home = () => {
-  const [cards, setCards] = useState([]);
-  const [showCreateCard, setShowCreateCard] = useState(false);
-  const [editCardId, setEditCardId] = useState(null);
   const navigate = useNavigate();
 
-
-  const fetchCards =  (userId) => {
-    axios
-      .get('http://localhost:3000/cards', {
-        withCredentials: true,
-        params: { userId },
-      })
-      .then((response) => setCards(response.data))
-      .catch((error) => console.log('Error fetching cards:', error));
+  const heroContainerStyle = {
+    backgroundImage: `url(${heroBackground})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center right',
+    height: '100vh',
+    width: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    padding: '0 20px',
   };
 
-// const fetchCards = (userId) => {
-//     axios
-//       .get('http://localhost:3000/cards', {
-//         withCredentials: true,
-//         params: { userId },
-//       })
-//       .then((response) => {
-//         setCards(response.data);
-//       })
-//       .catch((error) => console.log('Error fetching cards:', error));
-//   };
-  
+  const titleStyle = {
+    fontSize: '36px',
+    fontWeight: 'bolder',
+    marginBottom: '20px',
+    fontFamily: 'Lato',
+    color: 'white',
+    whiteSpace: 'pre-wrap',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+  };
 
-useEffect(() => {
-    // const userId = JSON.parse(localStorage.getItem('userId'));
-    fetchCards();
-  });
+  const buttonStyle = {
+    cursor: 'pointer',
+    height: '40px',
+    fontFamily: 'Poppins',
+    fontWeight: 'bolder',
+    width: '170px',
+    marginTop: '10px',
+    marginRight: '10px',
+    borderRadius: '10px',
+    border: 'none',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    backgroundColor: '#b8ffff',
+  };
 
-  const signOut = () => {
-    navigate('/');
+  const buttonStyleHome = {
+    cursor: 'pointer',
+    height: '40px',
+    fontFamily: 'Poppins',
+    fontWeight: 'bolder',
+    width: '170px',
+    marginTop: '10px',
+    marginRight: '10px',
+    borderRadius: '10px',
+    border: 'none',
+    backgroundColor: '#ffe0c2',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    // backgroundColor: 'white',
+  };
+
+  const heroContentStyle = {
+    marginTop: '70px',
+    marginLeft: '80px',
+
   }
 
-  const handleAddCardClick = () => {
-    setShowCreateCard(true);
+  const handleCreateCardClick = () => {
+    // Logic to handle the click on "Log your first entry" button
+    navigate('/create');
   };
 
-  const handleCreateCardSubmit = () => {
-    setShowCreateCard(false);
-    const userId = JSON.parse(localStorage.getItem('userId'));
-    fetchCards(userId);
+  const handleAddSightingClick = () => {
+    // Logic to handle the click on "Log a new sighting" button
+    navigate('/create');
   };
 
-  const handleEditCardClick = (cardId) => {
-    setEditCardId(cardId);
+  const handleVisitHomeClick = () => {
+    // Logic to handle the click on "Visit Home" button
+    navigate('/main');
   };
 
-  const handleCancelEdit = () => {
-    setEditCardId(null);
-  };
-
-  const handleCardUpdate = () => {
-    const userId = JSON.parse(localStorage.getItem('userId'));
-    fetchCards(userId);
-    setEditCardId(null);
-  };
-  // const handleDeleteCard = async (cardId) => {
-  //   try {
-  //     await axios.delete(`http://localhost:3000/cards/${cardId}`, {
-  //       withCredentials: true,
-  //     });
-  //     setDeleteTrigger(!deleteTrigger);
-  //     const userId = JSON.parse(localStorage.getItem('userId'));
-  //     fetchCards(userId);
-  //   } catch (error) {
-  //     console.error('Error deleting card:', error);
-  //   }
-  // };
   return (
-    <div></div>
-//     <>
-//     {/* <div>
-//       <button style={{position: 'fixed', top: '22', left: '0'}}onClick={signOut}>Sign Out</button>
-//       <IdentifyButton/>
-//     </div> */}
-//       {/* <div>
-//         {/* <h2 style={{textAlign: 'center'}}>BeakBook</h2> */}
-//         {showCreateCard ? (
-//           <CreateCard onSubmit={handleCreateCardSubmit} fetchCards={fetchCards} />
-//         ) : (
-//           <AddCard onClick={handleAddCardClick} />
-//         )}
-//       </div>
-
-//       <div>
-//         {!showCreateCard && !editCardId ? (
-//           <>
-//             {cards.length > 0 ? (
-//               cards.map((card) => (
-//                 <Card key={card._id} data={card} onEdit={handleEditCardClick} fetchCards={fetchCards} />
-//               ))
-//             ) : (
-//               <p>No cards found.</p>
-//             )}
-//           </>
-//         ) : null}
-//       </div>
-
-//       {editCardId && (
-//         <EditCard
-//           cardData={cards.find((card) => card._id === editCardId)}
-//           onCancel={handleCancelEdit}
-//           onSubmit={handleCardUpdate}
-//         />
-//       )}
-//     </>
-//   ); */}
-// };
-// </>
-)};
+    <div style={heroContainerStyle}>
+      <div style={heroContentStyle}>
+      <div style={titleStyle}>
+        Identify. Track. Soar with Your {'\n'}BeakBook.
+      </div>
+      <button style={buttonStyle} onClick={handleAddSightingClick}>
+        Log a new sighting
+      </button>
+      <button style={buttonStyleHome} onClick={handleVisitHomeClick}>
+        Visit Home
+      </button>
+    </div>
+    </div>
+  );
+};
 
 export default Home;
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import Card from './Card';
-
-// const Home = () => {
-//   const [cards, setCards] = useState([]);
-
-//   useEffect(() => {
-//     fetchCards();
-//   }, []);
-
-//   const fetchCards = () => {
-//     axios
-//       .get('http://localhost:3000/cards', {
-//         withCredentials: true,
-//       })
-//       .then((response) => setCards(response.data))
-//       .catch((error) => console.log('Error fetching cards:', error));
-//   };
-
-//   const handleDeleteCard = (cardId) => {
-//     setCards((prevCards) => prevCards.filter((card) => card._id !== cardId));
-//   };
-
-//   return (
-//     <div>
-//       {cards.length > 0 ? (
-//         cards.map((card) => (
-//           <Card key={card._id} data={card} onDelete={handleDeleteCard} onEdit={handleEditCard} />
-//         ))
-//       ) : (
-//         <p>No cards found.</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Home;

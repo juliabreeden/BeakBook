@@ -9,7 +9,7 @@ const Navbar = () => {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '0px 30px',
-    background: 'radial-gradient(circle at right bottom, #ffe0c2 , #c2ffff)',
+    background: 'radial-gradient(circle at right bottom, #ffe0c2 , #b8ffff)',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
     fontFamily:'Poppins',
     position: 'fixed',
@@ -29,6 +29,8 @@ const Navbar = () => {
     fontSize: '16px',
     marginLeft: '10px',
     marginRight: '10px',
+    // color: 'white',
+    fontWeight: 'bold',
   };
 
   return (

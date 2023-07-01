@@ -20,7 +20,6 @@ const App = () => {
     display: 'flex',
     background:'radial-gradient(circle at left top, #fdd9b5 , #a3ffff)',
     minHeight: '100vh',
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   }
