@@ -12,16 +12,17 @@ import Home from './Home';
 import LoginForm from './login';
 import SignUpForm from './signup';
 import Card from './Card';
+import Main from './Main';
 
 
 const App = () => {
 
   const appStyles = {
-    display: 'flex',
+    // display: 'flex',
     background:'radial-gradient(circle at left top, #fdd9b5 , #a3ffff)',
     minHeight: '100vh',
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   }
   
   document.body.style.margin = '0';
@@ -49,6 +50,7 @@ const RoutesWithNavbar = () => {
         <Route path="/" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/main" element = {<Main/>}/>
         <Route path="/create" element={<CreateCard />} />
         <Route path="/identify" element={<IdentifyBird />} />
         <Route path="/birdCards" element={<Card/>}/>

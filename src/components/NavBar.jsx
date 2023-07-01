@@ -38,8 +38,8 @@ const Navbar = () => {
       {/* <div style={logoStyle}>BeakBook</div> */}
       <img src={logo} alt="Logo" style={{ width: '100px' }} />
       <div>
-        <Link to="/home" style={navLinkStyle}>Home</Link>
-        <Link to="/birdCards" style={navLinkStyle}>My sightings</Link>
+        <Link to="/main" style={navLinkStyle}>Home</Link>
+        <Link to="/birdCards" style={navLinkStyle}>My Sightings</Link>
         <Link to="/create" style={navLinkStyle}>New Sighting</Link>
         <Link to="/identify" style={navLinkStyle}>Identify</Link>
         <Link to="/" style={navLinkStyle}>Sign out</Link>

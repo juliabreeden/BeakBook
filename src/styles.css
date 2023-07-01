@@ -34,3 +34,11 @@
     font-family: 'Varela Round', sans-serif;
     src: url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 } 
+
+input::placeholder {
+    color: gray;
+  }
+  
+  select option:disabled {
+    color: gray;
+  }
