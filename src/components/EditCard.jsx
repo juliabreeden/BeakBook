@@ -69,6 +69,7 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
 
   const inputStyle = {
     margin: '10px',
+    fontFamily:'Poppins',
   };
 
   const selectStyle = {
@@ -88,7 +89,10 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
     backgroundRepeat: 'repeat',
     backgroundPosition: 'center right',
     height: '100vh',
-    width: '100vw'}}>
+    width: '100vw',
+    fontFamily: 'Poppins',
+    flexDirection: 'column'}}>
+      <p style={{color: 'white', fontSize: '20', fontFamily:'Poppins', textAlign: 'center', alignSelf: 'center'}}>Edit the submission below. </p>
       <form onSubmit={handleSubmit} style={formStyle}>
         <input
           type="text"

@@ -56,7 +56,7 @@ const IdentifyBird = () => {
     border: '1px solid #ccc',
     borderRadius: '4px',
     padding: '20px',
-    width: '400px',
+    width: '300px',
     background: 'radial-gradient(circle at right bottom, #ffe0c2 , #c2ffff)',
   };
 
