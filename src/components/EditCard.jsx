@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import heroBackground from './heroBackground.jpg';
 
 const EditCard = ({ cardData, onCancel, onSubmit }) => {
   const [species, setSpecies] = useState(cardData.species);
@@ -63,6 +64,7 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
     borderRadius: '4px',
     padding: '20px',
     justifyContent: 'center',
+    background: 'radial-gradient(circle at right bottom, #ffe0c2 , #c2ffff)',
   };
 
   const inputStyle = {
@@ -81,7 +83,12 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
   };
 
   return (
-    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '100px', }}>
+    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center',    backgroundImage: `url(${heroBackground})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'repeat',
+    backgroundPosition: 'center right',
+    height: '100vh',
+    width: '100vw'}}>
       <form onSubmit={handleSubmit} style={formStyle}>
         <input
           type="text"

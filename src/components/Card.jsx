@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import heroBackground from './heroBackground.jpg';
+import EditCard from './EditCard';
 
 const Card = () => {
   const [cards, setCards] = useState([]);
@@ -103,6 +105,12 @@ const Card = () => {
 
   return (
     <>
+    {/* <div style={{  backgroundImage: `url(${heroBackground})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'repeat no-repeat',
+    backgroundPosition: 'center right',
+    height: '100vh',
+    width: '100vw'}}> */}
       {!showCreateCard && !editCardId && cards.length === 0 && (
         <p style={{ textAlign: 'center', paddingTop: '70px' }}>
           Looks like you don't have any sightings logged yet.{' '}
@@ -164,6 +172,7 @@ const Card = () => {
           onSubmit={handleCardUpdate}
         />
       )}
+      {/* </div> */}
     </>
   );
 };

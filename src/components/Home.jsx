@@ -9,7 +9,7 @@ const Home = () => {
   const heroContainerStyle = {
     backgroundImage: `url(${heroBackground})`,
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: 'repeat',
     backgroundPosition: 'center right',
     height: '100vh',
     width: '100vw',

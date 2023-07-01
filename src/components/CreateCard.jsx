@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles.css';
 import { Link } from 'react-router-dom';
+import heroBackground from './heroBackground.jpg';
 
 const CreateCard = () => {
   const [species, setSpecies] = useState('');
@@ -110,6 +111,12 @@ const CreateCard = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
+        backgroundImage: `url(${heroBackground})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'repeat',
+        backgroundPosition: 'center right',
+        height: '100vh',
+        width: '100vw'
       }}
     >
       <div style={{ 
@@ -120,7 +127,7 @@ const CreateCard = () => {
         margin: '10px',
         paddingTop: '20px',
         paddingBottom: '30px',
-        paddingRight: '40px',
+        paddingRight: '55px',
         // paddingLeft: '40px',
         background: 'radial-gradient(circle at right bottom, #ffe0c2 , #c2ffff)',
       }}>

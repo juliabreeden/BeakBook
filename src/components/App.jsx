@@ -13,11 +13,13 @@ import LoginForm from './login';
 import SignUpForm from './signup';
 import Card from './Card';
 import Main from './Main';
+import heroBackground from './heroBackground.jpg';
 
 
 const App = () => {
 
   const appStyles = {
+   
     // display: 'flex',
     background:'radial-gradient(circle at left top, #fdd9b5 , #a3ffff)',
     minHeight: '100vh',

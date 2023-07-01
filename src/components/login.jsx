@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../logo-transparent-png.png';
+import heroBackground from './heroBackground.jpg';
 
 
 
@@ -44,6 +45,19 @@ const LoginForm = () => {
         setLoginError(true); 
       });
   };
+
+  const containerStyle = {
+    backgroundImage: `url(${heroBackground})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center right',
+    height: '100vh',
+    width: '100vw',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+  }
 
   const titleStyle = {
     fontSize: '48px', 
@@ -131,13 +145,7 @@ const LoginForm = () => {
 
   return (
     <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        
-      }}
+      style={containerStyle}
     >
          <img src={logo} alt="Logo" style={{ width: '100px',  position: 'fixed',
     top: '0',
