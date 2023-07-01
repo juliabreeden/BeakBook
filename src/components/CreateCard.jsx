@@ -116,9 +116,11 @@ const CreateCard = () => {
         backgroundRepeat: 'repeat',
         backgroundPosition: 'center right',
         height: '100vh',
-        width: '100vw'
+        width: '100vw',
+        flexDirection: 'column',
       }}
     >
+       <p style={{color: 'white', fontSize: '20', fontFamily:'Poppins', textAlign: 'center', alignSelf: 'center'}}>Enter bird information below to create a new sighting.</p>
       <div style={{ 
         textAlign: 'center',
         alignItems: 'center',

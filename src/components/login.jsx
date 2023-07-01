@@ -63,7 +63,8 @@ const LoginForm = () => {
     fontSize: '48px', 
     marginTop: '0px',
     fontFamily: 'Poppins',
-    marginBottom: '2px'
+    marginBottom: '2px',
+    // color: 'white'
     
   };
 
@@ -140,7 +141,8 @@ const LoginForm = () => {
     paddingLeft: '10px',
     height: '30px', 
     backgroundColor:'#86f9f9',
-    cursor:'pointer'
+    cursor:'pointer',
+    borderRadius: '3px'
   };
 
   return (
