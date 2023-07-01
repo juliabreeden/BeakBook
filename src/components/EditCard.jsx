@@ -104,13 +104,13 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
           placeholder="Date"
           style={inputStyle}
         />
-        <input
+        {/* <input
           type="text"
           value={location}
           onChange={handleLocationChange}
           placeholder="Location"
           style={inputStyle}
-        />
+        /> */}
         <select
           value={birdWas}
           onChange={handleBirdWasChange}
