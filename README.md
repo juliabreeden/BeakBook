@@ -1,4 +1,3 @@
-[README.md](https://github.com/juliabreeden/BeakBook/files/12384459/README.md)[Uploading README.md…](
 BeakBook
 
 🐦 BeakBook - Your Feathered Friends, All in One Place! 🦉
