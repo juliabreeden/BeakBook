@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-
+import heroBackground from './heroBackground.jpg';
 
 const EditCard = ({ cardData, onCancel, onSubmit }) => {
   const [species, setSpecies] = useState(cardData.species);
@@ -43,60 +43,82 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
     };
 
     try {
-      const response = await axios.put(`http://localhost:3000/cards/${cardData._id}`, updatedCardData, {
-        withCredentials: true,
-      });
+      const response = await axios.put(
+        `http://localhost:3000/cards/${cardData._id}`,
+        updatedCardData,
+        {
+          withCredentials: true,
+        }
+      );
       onSubmit();
     } catch (error) {
       console.error('Error updating card:', error);
     }
   };
 
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    border: '1px solid #ccc',
+    width: '300px',
+    borderRadius: '4px',
+    padding: '20px',
+    justifyContent: 'center',
+    background: 'radial-gradient(circle at right bottom, #ffe0c2 , #c2ffff)',
+  };
+
+  const inputStyle = {
+    margin: '10px',
+    fontFamily:'Poppins',
+  };
+
+  const selectStyle = {
+    width: '93%',
+    alignSelf: 'center',
+    margin: '10px',
+    borderRadius: '4px',
+  };
+
+  const buttonStyle = {
+    margin: '10px',
+  };
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}
-         style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  border: '1px solid #ccc',
-                  borderRadius: '4px',
-                  padding: '20px',
-                }}
-      >
+    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center',    backgroundImage: `url(${heroBackground})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'repeat',
+    backgroundPosition: 'center right',
+    height: '100vh',
+    width: '100vw',
+    fontFamily: 'Poppins',
+    flexDirection: 'column'}}>
+      <p style={{color: 'white', fontSize: '20', fontFamily:'Poppins', textAlign: 'center', alignSelf: 'center'}}>Edit the submission below. </p>
+      <form onSubmit={handleSubmit} style={formStyle}>
         <input
           type="text"
           value={species}
           onChange={handleSpeciesChange}
           placeholder="Species"
-          style={{
-            margin: '10px'
-          }}
+          style={inputStyle}
         />
         <input
           type="text"
           value={date}
           onChange={handleDateChange}
           placeholder="Date"
-          style={{
-            margin: '10px'
-          }}
+          style={inputStyle}
         />
         {/* <input
           type="text"
           value={location}
           onChange={handleLocationChange}
           placeholder="Location"
+          style={inputStyle}
         /> */}
         <select
           value={birdWas}
-          onChange={handleBirdWasChange} 
-          style={{
-            width: '93%',
-            alignSelf: 'center',
-            margin: '10px',
-            borderRadius: '4px',
-            // marginLeft: '10px'
-          }}
+          onChange={handleBirdWasChange}
+          style={selectStyle}
         >
           <option value="" disabled>
             What was the bird doing?
@@ -111,13 +133,7 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
         <select
           value={difficulty}
           onChange={handleDifficultyChange}
-          style={{
-            width: '93%',
-            alignSelf: 'center',
-            margin: '10px',
-            borderRadius: '4px',
-        
-          }}
+          style={selectStyle}
         >
           <option value="" disabled>
             How difficult was it to spot this bird?
@@ -126,8 +142,10 @@ const EditCard = ({ cardData, onCancel, onSubmit }) => {
           <option value="Moderately Difficult">Moderately Difficult</option>
           <option value="Difficult">Difficult</option>
         </select>
-        <button type="submit" >Save</button>
-        <button type="button" onClick={onCancel}>
+        <button type="submit" style={buttonStyle}>
+          Save
+        </button>
+        <button type="button" onClick={onCancel} style={buttonStyle}>
           Cancel
         </button>
       </form>

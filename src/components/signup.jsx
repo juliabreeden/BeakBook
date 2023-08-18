@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import logo from '../logo-transparent-png.png';
+import heroBackground from './heroBackground.jpg';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState('');
@@ -96,6 +98,12 @@ const SignUpForm = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
+        backgroundImage: `url(${heroBackground})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'repeat',
+        backgroundPosition: 'center right',
+        height: '100vh',
+        width: '100vw',
         
       }}
     >

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import logo from '../logo-transparent-png.png';
+import heroBackground from './heroBackground.jpg';
 
 
 
@@ -45,11 +46,25 @@ const LoginForm = () => {
       });
   };
 
+  const containerStyle = {
+    backgroundImage: `url(${heroBackground})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center right',
+    height: '100vh',
+    width: '100vw',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+  }
+
   const titleStyle = {
     fontSize: '48px', 
     marginTop: '0px',
-    fontFamily: 'Montseratt',
-    marginBottom: '2px'
+    fontFamily: 'Poppins',
+    marginBottom: '2px',
+    // color: 'white'
     
   };
 
@@ -126,19 +141,18 @@ const LoginForm = () => {
     paddingLeft: '10px',
     height: '30px', 
     backgroundColor:'#86f9f9',
-    cursor:'pointer'
+    cursor:'pointer',
+    borderRadius: '3px'
   };
 
   return (
     <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        
-      }}
+      style={containerStyle}
     >
+         <img src={logo} alt="Logo" style={{ width: '100px',  position: 'fixed',
+    top: '0',
+    left: '0',
+    right: '0', width: '150px', height: '28px'}} />
       <div style={{ 
         textAlign: 'center',
         borderRadius: '10px',
