@@ -23,8 +23,6 @@ https://www.veed.io/view/6420a35e-5b7b-4942-b474-4002636d2f31/showcase
 
 - Bird Sightings Journal: Users can log and organize their bird sightings with details such as species, location, date, time, and additional notes or observations.
 - Authentication: Secure user authentication to ensure that each user's data is protected and accessible only to them.
-- CRUD Functionality: Allows users to create, read, update, and delete entries in their bird sightings journal.
 - Database Storage: Reliable and organized storage of user data and sightings in a MongoDB database.
 - Responsive Design: An easy-to-use and intuitive interface that's fully responsive, providing a seamless experience for users.
-- Database Storage: Reliable and organized storage of user data and sightings in a MongoDB database.
 
