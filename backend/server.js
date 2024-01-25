@@ -79,16 +79,13 @@ app.get('/cards', async (req, res) => {
   }
 });
 
-// Assuming you have an Express app instance defined as 'app'
+
 
 app.put('/cards/:id', (req, res) => {
   const { id } = req.params;
   const updatedCard = req.body; // Assuming the updated card data is sent in the request body
 
-  // Update the card in your database using the provided ID and updatedCard object
-
-  // Example implementation using MongoDB and Mongoose
-  // Assuming you have a Card model defined using Mongoose
+ 
   Card.findByIdAndUpdate(id, updatedCard, { new: true })
     .then((updatedCard) => {
       res.status(200).json(updatedCard);
@@ -131,7 +128,7 @@ app.get('/test-cookie', (req, res) => {
 
 // mongoose.connect('mongodb+srv://juliabreeden1018:m0ng0dbtim3@cluster0.7k6qhck.mongodb.net/');
 
-mongoose.connect('mongodb+srv://juliabreeden1018:m0ng0dbtim3@cluster0.7k6qhck.mongodb.net/')
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB Atlas');
   })
